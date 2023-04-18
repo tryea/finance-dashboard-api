@@ -4,7 +4,7 @@ import Transaction from "../models/Transaction.js"
 
 const transactionRoutes = express.Router()
 
-transactionRoutes.get('/transaction', async (req, res) => {
+transactionRoutes.get('/transactions', async (req, res) => {
     try {
         const transactions = await Transaction.find()
             .limit(50)
