@@ -3,10 +3,11 @@ import dotenv from "dotenv";
 
 import KPI from "../models/KPI.js";
 
-import { kpis } from '../data/data.js'
+import { kpis, transactions, products } from '../data/data.js'
+import Transaction from "../models/Transaction.js";
+import Product from "../models/Product.js";
 dotenv.config()
 
-console.log({ MONGO_URL: process.env.MONGO_URL });
 mongoose
     .connect(process.env.MONGO_URL, {
         useNewUrlParser: true,
@@ -14,7 +15,8 @@ mongoose
     })
     .then(async () => {
         await mongoose.connection.db.dropDatabase();
-        console.log(kpis.length);
         await KPI.insertMany(kpis)
+        await Transaction.insertMany(transactions)
+        await Product.insertMany(products)
         process.exit(0)
     })
