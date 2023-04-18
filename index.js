@@ -8,6 +8,7 @@ import morgan from "morgan"
 
 import kpiRoutes from "./routes/kpi.js"
 import productRoutes from "./routes/product.js";
+import transactionRoutes from "./routes/transaction.js";
 // CONFIGURATIONS
 
 dotenv.config()
@@ -24,6 +25,8 @@ app.use(cors());
 /* KPI ROUTES */
 app.use('/kpi', kpiRoutes)
 app.use('/product', productRoutes)
+app.use('/transaction', transactionRoutes)
+
 console.log('hello')
 const PORT = process.env.PORT || 9800
 // MONGOOSE SETUP
